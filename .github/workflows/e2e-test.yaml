@@ -1,18 +1,16 @@
 name: SNOW E2E Tests
 
 on:
-  push:
-    branches:
-      - main
 
 jobs:
-  e2e-tests:
+  build:
+  
     name: Run SNOW E2E Tests
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
@@ -20,13 +18,13 @@ jobs:
           dotnet-version: '7.0.x'
 
       - name: Install dependencies
-        run: dotnet restore ./SnowE2E.Test
+        run: dotnet restore 
 
       - name: Build Solution
-        run: dotnet build ./SnowE2E.Test --no-restore
+        run: dotnet build 
 
       - name: Run E2E Tests
         env:
           SNOW_USERNAME: ${{ secrets.SNOW_USERNAME }}
           SNOW_PASSWORD: ${{ secrets.SNOW_PASS }}
-        run: dotnet test ./SnowE2E.Test--logger "trx;LogFileName=TestResults.trx" --results-directory ./TestResults
+        run: dotnet test --logger "trx;LogFileName=TestResults.trx" --results-directory ./TestResults
