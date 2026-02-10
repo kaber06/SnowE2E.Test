@@ -17,8 +17,8 @@ namespace SnowE2E.Test.Helper
             }
             else
             {
-                driver.Navigate().GoToUrl(AppSettings.CSMHomePage);
-                driverWait.Until(e => e.PageSource.Contains("Self-Service Portal"));
+                driver.Navigate().GoToUrl(AppSettings.ESCHomePage);
+                driverWait.Until(e => e.PageSource.Contains("Employee Center"));
             }
         }
 
@@ -29,7 +29,7 @@ namespace SnowE2E.Test.Helper
 
             if (redirectToSSPHomePage)
             {
-                driverWait.Until(e => e.PageSource.Contains("Self-Service Portal"));
+                driverWait.Until(e => e.PageSource.Contains("Employee Center"));
             }
             else
             {
@@ -37,20 +37,9 @@ namespace SnowE2E.Test.Helper
                 {
                     Pages.BackOffice backOffice = new Pages.BackOffice();
                     Thread.Sleep(500); //a short sleep for the url change
-                    driverWait.Until(e => e.Url.Contains("dashboard"));
                     driverWait.Until(e => jsedriver.ExecuteScript("return document.readyState").ToString() == "complete");
                 }
                 catch (Exception ex) { Console.WriteLine("Exception caught: {0}", ex); }
-                finally
-                {
-                    if (!driver.Url.Contains("dashboard"))
-                    {
-                        driver.Navigate().Refresh();
-                        driverWait.Until(e => e.Url.Contains("dashboard"));
-                        driverWait.Until(e => jsedriver.ExecuteScript("return document.readyState").ToString() == "complete");
-                    }
-
-                }
             }
         }
 
@@ -82,16 +71,6 @@ namespace SnowE2E.Test.Helper
             IWebElement loginBtn = driver.FindElement(By.Id("sysverb_login"));
             loginBtn.Click();
             Thread.Sleep(3000);
-
-            try
-            {
-                driverWait.Until(e => e.Url.Contains("dashboard"));
-            }
-            catch (UnhandledAlertException e)
-            {
-                Console.WriteLine(e.Message + "\nPage Refresh performed");
-                LoginToSnow();
-            }
 
         }
         

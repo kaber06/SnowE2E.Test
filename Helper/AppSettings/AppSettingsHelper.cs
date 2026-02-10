@@ -11,7 +11,7 @@ namespace SnowE2E.Test.Helper
 
             AppSettings.Environment = AppSettingsFile.GetValue<string>("testrunner:environment");
             var envSection = AppSettingsFile.GetSection("servicenow:" + AppSettings.Environment);
-            AppSettings.CSMHomePage = AppSettingsFile.GetValue<string>(envSection.Path + ":CSM");
+            AppSettings.ESCHomePage = AppSettingsFile.GetValue<string>(envSection.Path + ":ESC");
             AppSettings.BackOfficePage = AppSettingsFile.GetValue<string>(envSection.Path + ":BackOfficeHomePage");
 
             AppSettings.MainUsername = AppSettingsFile.GetValue<string>("servicenow:mainUser:username");
