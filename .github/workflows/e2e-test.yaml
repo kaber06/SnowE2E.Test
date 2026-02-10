@@ -1,10 +1,10 @@
 name: SNOW E2E Tests
 
 on:
+  workflow_dispatch:
 
 jobs:
-  build:
-  
+  build:  
     name: Run SNOW E2E Tests
     runs-on: ubuntu-latest
 
