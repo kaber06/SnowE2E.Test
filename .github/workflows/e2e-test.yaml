@@ -20,13 +20,13 @@ jobs:
           dotnet-version: '7.0.x'
 
       - name: Install dependencies
-        run: dotnet restore ./SnowE2E.Test/SnowE2E.Test.csproj
+        run: dotnet restore ./SnowE2E.Test
 
       - name: Build Solution
-        run: dotnet build ./SnowE2E.Test/SnowE2E.Test.csproj --no-restore
+        run: dotnet build ./SnowE2E.Test --no-restore
 
       - name: Run E2E Tests
         env:
           SNOW_USERNAME: ${{ secrets.SNOW_USERNAME }}
           SNOW_PASSWORD: ${{ secrets.SNOW_PASS }}
-        run: dotnet test ./SnowE2E.Test/SnowE2E.Test.csproj --logger "trx;LogFileName=TestResults.trx" --results-directory ./TestResults
+        run: dotnet test ./SnowE2E.Test--logger "trx;LogFileName=TestResults.trx" --results-directory ./TestResults
