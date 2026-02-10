@@ -14,7 +14,8 @@ public class Tests : DriverHelper
     {
         driver = new ChromeDriver();
     }
-
+    
+    [Ignore("This is a sandbox test, not meant to be run in CI/CD")]
     [Test]
     public void NavigateToGoogle()
     {
