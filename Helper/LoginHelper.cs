@@ -55,7 +55,7 @@ namespace SnowE2E.Test.Helper
 
         private void LoginAsAdmin()
         {
-            string snowPass = Environment.GetEnvironmentVariable("SNOW_PASS");
+            string snowPass = Environment.GetEnvironmentVariable("SNOW_PASSWORD");
             string snowUsername = Environment.GetEnvironmentVariable("SNOW_USERNAME");
             driver.Navigate().GoToUrl(AppSettings.BackOfficePage + "/login.do");
             string title = driver.Title;
