@@ -22,12 +22,12 @@ namespace SnowE2E.Test.Helper
             }
         }
 
-        public void LoginToSNow(string impersonateeName, string impersonateeUserID, bool redirectToSSPHomePage = false)
+        public void LoginToSNow(string impersonateeName, string impersonateeUserID, bool redirectToESCHomePage = false)
         {
             LoginAsAdmin();
             LoginAsImpersonatee(impersonateeUserID);
 
-            if (redirectToSSPHomePage)
+            if (redirectToESCHomePage)
             {
                 driverWait.Until(e => e.PageSource.Contains("Employee Center"));
             }
