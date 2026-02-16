@@ -6,7 +6,7 @@ namespace SnowE2E.Test.Test
     public class LoginPage : BaseFixture
     {
         [Test]
-        public void LoginTest()
+        public void LP001_LoginTest()
         {
             LoginHelper loginHelper = new();
             loginHelper.LoginToSnow();
