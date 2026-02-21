@@ -16,7 +16,8 @@ namespace SnowE2E.Test
         [OneTimeTearDown]
         public void GlobalTeardown()
         {
-            driver.Dispose();
+            TestDataHelper.CloseRITM();    
+            driver?.Dispose();
         }
     }
 }
